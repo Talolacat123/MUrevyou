@@ -3,14 +3,6 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-# --------------Tables------------------
-#class User(Base):
-#   __tablename__ = 'users'
-#   id = Column(Integer, primary_key=True)
-#   name = Column(String)
-#   photo = Column(String)
-#   stafforstudent = Column(Boolean)
-
 class Album(Base):
    __tablename__ = 'albums'
    id = Column(Integer, primary_key=True)
