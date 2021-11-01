@@ -10,7 +10,6 @@ gunicorn==18.0
 itsdangerous==0.24
 Jinja2==2.9.6
 passlib==1.7.1
-psycopg2==2.7.3.2
 python-dateutil==2.4.2
 python-engineio==1.7.0
 python-socketio==1.8.0
