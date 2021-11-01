@@ -16,11 +16,11 @@ def submit():
 
 @app.route("/staffpicks")
 def staffpicks():
-    return render_template("staffpicks.html",albums = query_by_type("staff"), polarity = polarity, sen = sen)
+    return render_template("staffpicks.html",albums = query_by_type("staff"))
 
 @app.route("/studentpicks")
 def studentpicks():
-    return render_template("studentpicks.html", albums = query_by_type("student"), polarity = polarity, sen = sen)
+    return render_template("studentpicks.html", albums = query_by_type("student"))
 
 @app.route("/form", methods = ['GET','POST'])
 def homepage():
