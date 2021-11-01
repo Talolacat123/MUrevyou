@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from database import *
+from textblob import TextBlob
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sosecret'
@@ -15,11 +16,11 @@ def submit():
 
 @app.route("/staffpicks")
 def staffpicks():
-    return render_template("staffpicks.html",albums = query_by_type("staff"))
+    return render_template("staffpicks.html",albums = query_by_type("staff"), polarity = polarity)
 
 @app.route("/studentpicks")
 def studentpicks():
-    return render_template("studentpicks.html", albums = query_by_type("student"))
+    return render_template("studentpicks.html", albums = query_by_type("student"), polarity = polarity)
 
 @app.route("/form", methods = ['GET','POST'])
 def homepage():
@@ -34,9 +35,11 @@ def homepage():
 		about = request.form["about"]
 		why_important = request.form["why_important"]
 		stafforstudent = request.form["stafforstudent"]
+		
+		sen = TextBlob(why_important)
+		polarity = sen.sentiment.polarity;
 
-
-		add_album(sub_by, album_name, artist, image_link, about, why_important, stafforstudent)
+		add_album(sub_by, album_name, artist, image_link, about, why_important, stafforstudent, polarity)
 		return render_template("studentpicks.html",
 		s = sub_by,  an = album_name, a = artist, il = image_link,ab = about, wi = why_important, sos = stafforstudent)
 
