@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Boolean, Float
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
@@ -21,3 +21,4 @@ class Album(Base):
    about = Column(String)
    why_important = Column(String)
    stafforstudent = Column(String)
+   sen = Column(Float)
